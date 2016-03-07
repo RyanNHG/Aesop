@@ -1,0 +1,40 @@
+button {
+    padding: 1rem;
+    border: none;
+    outline: none;
+    background-color: $light-gray;
+    color: $dark-gray;
+    cursor: pointer;
+
+    display: flex;
+    align-items: center;
+    font-size: 1rem;
+
+    &:hover {
+        background-color: $gray;
+    }
+
+    &.primary {
+        background-color: $flat-blue;
+        color: $white;
+        &:hover {
+            background-color: darken($flat-blue, 10%);
+        }
+    }
+
+    &.success {
+        background-color: $flat-green;
+        color: $white;
+        &:hover {
+            background-color: darken($flat-green, 10%);
+        }
+    }
+
+    &.danger {
+        background-color: $flat-red;
+        color: $white;
+        &:hover {
+            background-color: darken($flat-red, 10%);
+        }
+    }
+}

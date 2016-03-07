@@ -5,6 +5,7 @@ var sass = require('gulp-sass');
 
 var paths = {
     html: './webapp/src/**/*.html',
+    image: './webapp/src/resources/**/*.png',
     js: './webapp/src/app/**/*.js',
     sass: './webapp/src/sass/*.scss'
 };
@@ -18,10 +19,12 @@ gulp.task('browserify', function() {
 
 });
 
-gulp.task('copyHTML', function() {
+gulp.task('copyResources', function() {
 
     gulp.src(paths.html)
         .pipe(gulp.dest('webapp/dist'))
+    gulp.src(paths.image)
+        .pipe(gulp.dest('webapp/dist/static/resources'))
 
 });
 
@@ -33,10 +36,11 @@ gulp.task('sass', function () {
 
 gulp.task('watch', function() {
 
-    gulp.watch(paths.html, ['copyHTML']);
+    gulp.watch(paths.html, ['copyResources']);
+    gulp.watch(paths.image, ['copyResources']);
     gulp.watch(paths.sass, ['sass']);
     gulp.watch(paths.js, ['browserify']);
 
 });
 
-gulp.task('default', ['watch', 'browserify', 'sass', 'copyHTML']);
+gulp.task('default', ['watch', 'browserify', 'sass', 'copyResources']);

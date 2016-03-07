@@ -1,0 +1,12 @@
+<nav class="navbar {{$ctrl.navColor}}">
+  <div class="container">
+    <ul ng-repeat="(i, links) in $ctrl.navLinks" class="nav-links {{i}}">
+      <li ng-repeat="link in links"
+        ng-class="{brand: link.isBrand != null, active: $ctrl.path == link.path}"
+        ng-click="$ctrl.linkClicked(link.path, link.onClick)">
+        <i class="material-icons">{{link.icon}}</i>
+        <span has-icon="{{link.icon != null}}">{{link.label}}</span>
+      </li>
+    </ul>
+  </div>
+</nav>
