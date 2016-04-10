@@ -35,7 +35,7 @@ gulp.task('sass', function () {
     .pipe(gulp.dest('./webapp/dist/static'));
 });
 
-gulp.task('watch', function() {
+gulp.task('watch', ['build'], function() {
 
     gulp.watch(paths.html, ['copyResources']);
     gulp.watch(paths.image, ['copyResources']);
@@ -50,4 +50,6 @@ gulp.task('clean', function () {
 		.pipe(clean({force: true}));
 });
 
-gulp.task('default', ['watch', 'browserify', 'sass', 'copyResources']);
+gulp.task('build', ['browserify', 'sass', 'copyResources']);
+
+gulp.task('default', ['build']);
