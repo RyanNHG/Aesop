@@ -1,0 +1,111 @@
+@import url(https://fonts.googleapis.com/icon?family=Material+Icons);
+@import url(https://fonts.googleapis.com/css?family=Roboto);
+@import url(https://fonts.googleapis.com/css?family=Roboto+Slab);
+navbar .navbar {
+  height: 50px;
+  justify-content: center;
+  color: white;
+  transition: background-color .3s; }
+  navbar .navbar.gray {
+    background-color: #333; }
+    navbar .navbar.gray .nav-links > li.active,
+    navbar .navbar.gray .nav-links > li:hover {
+      background-color: #1a1a1a; }
+  navbar .navbar.blue {
+    background-color: #2D95BF; }
+    navbar .navbar.blue .nav-links > li.active,
+    navbar .navbar.blue .nav-links > li:hover {
+      background-color: #237596; }
+  navbar .navbar.green {
+    background-color: #4EBA6F; }
+    navbar .navbar.green .nav-links > li.active,
+    navbar .navbar.green .nav-links > li:hover {
+      background-color: #3c9958; }
+  navbar .navbar.red {
+    background-color: #F15A5A; }
+    navbar .navbar.red .nav-links > li.active,
+    navbar .navbar.red .nav-links > li:hover {
+      background-color: #ed2b2b; }
+  navbar .navbar.purple {
+    background-color: #955BA5; }
+    navbar .navbar.purple .nav-links > li.active,
+    navbar .navbar.purple .nav-links > li:hover {
+      background-color: #774984; }
+  navbar .navbar ul.nav-links.left {
+    flex: 1; }
+  navbar .navbar ul.nav-links > li {
+    font-size: 1rem;
+    align-items: center;
+    padding: 0 1rem;
+    cursor: pointer;
+    transition: background-color .3s; }
+    navbar .navbar ul.nav-links > li.brand {
+      font-family: Roboto Slab;
+      font-weight: bold;
+      font-size: 1.5rem; }
+    navbar .navbar ul.nav-links > li.active {
+      cursor: default; }
+    navbar .navbar ul.nav-links > li > span[has-icon="true"] {
+      padding-left: .25rem; }
+      @media screen and (max-width: 480px) {
+        navbar .navbar ul.nav-links > li > span[has-icon="true"] {
+          display: none; } }
+
+button {
+  padding: 1rem;
+  border: none;
+  outline: none;
+  background-color: #ddd;
+  color: #333;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  font-size: 1rem; }
+  button:hover {
+    background-color: #888; }
+  button.primary {
+    background-color: #2D95BF;
+    color: #fff; }
+    button.primary:hover {
+      background-color: #237596; }
+  button.success {
+    background-color: #4EBA6F;
+    color: #fff; }
+    button.success:hover {
+      background-color: #3c9958; }
+  button.danger {
+    background-color: #F15A5A;
+    color: #fff; }
+    button.danger:hover {
+      background-color: #ed2b2b; }
+
+html, body {
+  height: 100%; }
+
+body {
+  flex-direction: column;
+  font-family: Roboto;
+  overflow: auto; }
+
+body,
+h1, h2, h3, h4, h5, h6, p,
+nav, div, span,
+ul, li {
+  display: flex;
+  margin: 0;
+  padding: 0; }
+
+.page {
+  flex: 1;
+  justify-content: center; }
+  .page > .container {
+    background-color: #fff; }
+
+.container {
+  width: 100%;
+  max-width: 1280px; }
+
+div[ng-view] {
+  width: 100%; }
+  div[ng-view] > * {
+    width: 100%; }
