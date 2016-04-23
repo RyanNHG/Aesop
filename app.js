@@ -8,8 +8,9 @@ var scraper = require('./scraper');
 var api = require('./api');
 
 // Serves static files
-app.use('/static', express.static(__dirname + '/webapp/dist/static'));
-app.use('/app', express.static(__dirname + '/webapp/dist/app'));
+app.use('/static', express.static(__dirname + '/webapp/dist/static/'));
+app.use('/node_modules', express.static(__dirname + '/node_modules/'));
+app.use('/templates', express.static(__dirname + '/webapp/dist/templates/'));
 
 // Routes to web scraper
 // app.get('/scrape', scraper);
@@ -24,6 +25,7 @@ app.use('/api', router);
 
 //  Send all other requests to the webapp.
 app.use(function(req, res){
+	console.log(req.method, req.url);
     res.status(200).sendFile(__dirname+'/webapp/dist/index.html');
 });
 

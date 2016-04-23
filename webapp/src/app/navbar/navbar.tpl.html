@@ -1,12 +1,21 @@
-<nav class="navbar {{$ctrl.navColor}}">
+<header class="header">
   <div class="container">
-    <ul ng-repeat="(i, links) in $ctrl.navLinks" class="nav-links {{i}}">
-      <li ng-repeat="link in links"
-        ng-class="{brand: link.isBrand != null, active: $ctrl.path == link.path}"
+
+    <div ng-repeat="(i, links) in $ctrl.navLinks" class="header-{{i}}">
+      <a ng-repeat="link in links" class="header-tab"
+        ng-class="{'serif': link.isBrand != null, 'subtitle': link.isBrand != null, 'is-active': $ctrl.location.path() == link.path}"
         ng-click="$ctrl.linkClicked(link.path, link.onClick)">
-        <i class="material-icons">{{link.icon}}</i>
-        <span has-icon="{{link.icon != null}}">{{link.label}}</span>
-      </li>
-    </ul>
+        <span class="icon" ng-hide="!link-icon">
+          <i class="material-icons">{{link.icon}}</i>
+        </span>
+        {{link.label}}
+      </a>
+    </div>
+
   </div>
-</nav>
+</header>
+
+<modal show-modal="$ctrl.showModal">
+  <h3>Hello.</h3>
+  <p>Orange vests are for pussies!</p>
+</modal>

@@ -1,11 +1,9 @@
-module.exports = ['$scope', '$location',
-function($scope, $location){
+module.exports = ['$location',
+function($location){
 
-    var self = this;
+    var ctrl = this;
 
-    this.enableColorChange = true;
-
-    this.navLinks = {
+    ctrl.navLinks = {
         left: [
             {
                 label: 'Aesop',
@@ -14,14 +12,14 @@ function($scope, $location){
                 isBrand: true
             },
             {
-                label: 'Dashboard',
-                path: '/dashboard',
-                icon: 'dashboard'
+                label: 'Read',
+                path: '/read',
+                icon: 'book'
             },
             {
-                label: 'Settings',
-                path: '/settings',
-                icon: 'settings'
+                label: 'Explore',
+                path: '/explore',
+                icon: 'dashboard'
             }
         ],
         right: [
@@ -34,42 +32,28 @@ function($scope, $location){
         ]
     };
 
-    this.path = $location.path();
+    ctrl.showModal = true;
 
-    // Update active link on route change
-    $scope.$on('$routeChangeSuccess', function(){
-        self.path = $location.path();
-        self.getNavColor();
-    });
+    ctrl.location = $location;
 
     //  Go to another page
-    this.linkClicked = function(path, onClick) {
+    ctrl.linkClicked = function(path, onClick) {
 
         //  If no path is specified, call the onClick function (in this controller).
         if(path == null && onClick != null)
-          this[onClick]();
+          ctrl[onClick]();
 
         if(path != null)
           $location.path(path);
     };
 
     //  Shows sign in modal (once that thing is implemented)
-    this.showSignInModal = function(){
-      console.log('show sign in modal');
+    ctrl.showSignInModal = function(){
+        ctrl.showModal = true;
     };
 
-    //  Do cool stuff with the nav color
-    this.getNavColor = function() {
-        var path = this.path;
-
-        if(this.enableColorChange)
-            this.navColor = (path == '/profile') ? 'red' :
-                (path == '/dashboard') ? 'green' :
-                (path == '/settings') ? 'purple':
-                (path == '/') ? 'blue' : 'gray';
-        else this.navColor = 'blue';
-    };
-
-    this.getNavColor();
+    ctrl.close = function(){
+        ctrl.showModal = false;
+    }
 
 }];

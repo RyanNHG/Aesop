@@ -1,8 +1,7 @@
-var angular = require('angular');
-
 angular.module('app', [
-    require('./navbar'),
-    require('angular-route'),
+    require('navbar'),
+    require('pages'),
+    require('angular-route')
 ])
     .config(require('./app.router'))
 ;

@@ -1,48 +1,22 @@
-@import url(https://fonts.googleapis.com/icon?family=Material+Icons);
 @import url(https://fonts.googleapis.com/css?family=Roboto);
 @import url(https://fonts.googleapis.com/css?family=Roboto+Slab);
 
-@import 'colors';
-@import 'navbar';
-@import 'button';
-
-html, body{
-    height: 100%;
-}
-
 body {
-    flex-direction: column;
     font-family: Roboto;
-    overflow: auto;
 }
 
-body,
-h1, h2, h3, h4, h5, h6, p,
-nav, div, span,
-ul, li {
-    display: flex;
-    margin: 0;
-    padding: 0;
+.serif {
+    font-family: Roboto Slab;
 }
 
-.page {
-    flex: 1;
-    justify-content: center;
-    //background-color: $light-gray;
+// Prevent navbar collapse
+.header .container {
 
-    >.container {
-        background-color: $white;
-    }
-}
-
-.container {
-    width: 100%;
-    max-width: 1280px;
-}
-
-div[ng-view] {
-    width: 100%;
-    >* {
-        width: 100%;
+    @media screen and (max-width: 768px){
+        -webkit-box-orient: inherit;
+        -webkit-box-direction: inherit;
+        -webkit-flex-direction: inherit;
+        -ms-flex-direction: inherit;
+        flex-direction: inherit;
     }
 }

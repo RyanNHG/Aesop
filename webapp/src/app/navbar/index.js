@@ -1,9 +1,7 @@
-require('angular').module(module.exports = 'NavbarComponent',[
+angular.module(module.exports = 'navbar',[
+	require('shared/modal')
 ])
-
-  .component('navbar', {
-    templateUrl: 'app/navbar/navbar.tpl.html',
+  .component(module.exports, {
+    templateUrl: 'templates/navbar/navbar.tpl.html',
     controller: require('./navbar.ctrl')
   })
-
-;

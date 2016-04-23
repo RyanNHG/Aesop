@@ -3,13 +3,13 @@ function($routeProvider, $locationProvider){
 
     $routeProvider.
         when('/', {
-            template: '<home-page></home-page>'
+            template: '<welcome-page></welcome-page>'
         }).
-        when('/dashboard', {
-            template: '<dashboard-page></dashboard-page>'
+        when('/read', {
+            template: '<read-page></read-page>'
         }).
-        when('/settings', {
-            template: '<settings-page></settings-page>'
+        when('/explore', {
+            template: '<explore-page></explore-page>'
         }).
         when('/profile', {
             template: '<profile-page></profile-page>'
