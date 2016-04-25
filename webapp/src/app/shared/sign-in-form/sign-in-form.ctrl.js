@@ -18,7 +18,8 @@ module.exports = ['UserService', function(UserService){
         ctrl.signingIn = true;
 
         promise.then(function(res){
-            ctrl.showModal = false;
+            console.log('Promise returned!');
+
             ctrl.signingIn = false;
 
             if(ctrl.onSignIn)
@@ -26,6 +27,10 @@ module.exports = ['UserService', function(UserService){
         })
 
     };
+
+    ctrl.isSigningIn = function(){
+        return ctrl.signingIn;
+    }
 
     ctrl.swapForms = function(){
     	ctrl.formIndex = (ctrl.formIndex + 1) % 2;

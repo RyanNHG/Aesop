@@ -1,7 +1,7 @@
 angular.module('app', [
     require('navbar'),
     require('pages'),
-	require('shared/user-service'),
+	require('api-service'),
     require('angular-route')
 ])
     .config(require('./app.router'))

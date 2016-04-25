@@ -1,6 +1,5 @@
 var express = require('express');
 var app = express();
-var router = express.Router();
 
 var bodyParser = require('body-parser');
 
@@ -20,8 +19,7 @@ app.use(bodyParser.urlencoded({extended:true}));
 app.use(bodyParser.json());
 
 //  Send all /api calls to the api
-api(router);
-app.use('/api', router);
+api(app);
 
 //  Send all other requests to the webapp.
 app.use(function(req, res){

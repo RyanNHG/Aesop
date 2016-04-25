@@ -15,11 +15,11 @@
   </p>
 
   <!-- Confirm Password -->
-  <p class="control has-icon" ng-show="$ctrl.formIndex == 1">
+<!--   <p class="control has-icon" ng-show="$ctrl.formIndex == 1">
     <input class="input" type="password" name="confirmPassword" ng-model="$ctrl.confirmPassword" placeholder="Confirm Password"
       ng-required="$ctrl.formIndex == 1">
     <i class="fa material-icons">lock</i>
-  </p>
+  </p> -->
 
   <!-- Buttons -->
   <p class="control is-grouped pull-right">
@@ -31,7 +31,7 @@
 
     <!-- Submit Button -->
     <a class="button is-success" 
-    ng-class="{'is-disabled': signInForm.$invalid, 'is-loading': $ctrl.signingIn }"
+    ng-class="{'is-disabled': signInForm.$invalid, 'is-loading': $ctrl.isSigningIn() }"
     ng-click="$ctrl.submit($ctrl.email, $ctrl.password)">
       Sign {{$ctrl.headerText()}}
       <span class="icon">
