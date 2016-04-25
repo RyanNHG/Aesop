@@ -1,4 +1,4 @@
-<header class="header">
+<header class="header card is-fullwidth">
   <div class="container">
 
     <div ng-repeat="(i, links) in $ctrl.navLinks" class="header-{{i}}">
@@ -8,13 +8,13 @@
         <span class="icon" ng-hide="!link-icon">
           <i class="fa material-icons">{{link.icon}}</i>
         </span>
-        {{link.label}}
+        <span ng-class="{'is-hidden-mobile': !link.isBrand}">{{link.label}}</span>
       </a>
     </div>
 
   </div>
 </header>
 
-<modal show-modal="$ctrl.showModal">
+<modal title="Welcome" show-modal="$ctrl.showModal">
   <sign-in-form on-sign-in="$ctrl.close()"></sign-in-form>
 </modal>

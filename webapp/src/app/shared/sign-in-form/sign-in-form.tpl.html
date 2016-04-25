@@ -1,0 +1,43 @@
+<form name="signInForm" novalidate ng-init="$ctrl.init()">
+
+  <!-- Email Input -->
+  <label class="label">Email</label>
+  <p class="control has-icon">
+    <input class="input" type="email" name="email" ng-model="$ctrl.email" placeholder="Email" required>
+    <i class="fa material-icons">email</i>
+  </p>
+
+  <!-- Password -->
+  <label class="label">Password</label>
+  <p class="control has-icon">
+    <input class="input" type="password" name="password" ng-model="$ctrl.password" placeholder="Password" required>
+    <i class="fa material-icons">lock</i>
+  </p>
+
+  <!-- Confirm Password -->
+  <p class="control has-icon" ng-show="$ctrl.formIndex == 1">
+    <input class="input" type="password" name="confirmPassword" ng-model="$ctrl.confirmPassword" placeholder="Confirm Password"
+      ng-required="$ctrl.formIndex == 1">
+    <i class="fa material-icons">lock</i>
+  </p>
+
+  <!-- Buttons -->
+  <p class="control is-grouped pull-right">
+
+    <!-- Swap Button -->
+    <a class="button is-link" ng-click="$ctrl.swapForms()" ng-hide="$ctrl.only != null">
+      I {{$ctrl.buttonText()}} an account
+    </a>
+
+    <!-- Submit Button -->
+    <a class="button is-success" 
+    ng-class="{'is-disabled': signInForm.$invalid, 'is-loading': $ctrl.signingIn }"
+    ng-click="$ctrl.submit($ctrl.email, $ctrl.password)">
+      Sign {{$ctrl.headerText()}}
+      <span class="icon">
+        <i class="fa material-icons">arrow_forward</i>
+      </span>
+    </a>
+  </p>
+
+</form>

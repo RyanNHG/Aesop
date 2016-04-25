@@ -27,12 +27,12 @@ function($location){
                 label: 'Sign in',
                 //path: '/profile',
                 onClick: 'showSignInModal',
-                icon: 'face'
+                icon: 'account_circle'
             }
         ]
     };
 
-    ctrl.showModal = true;
+    ctrl.showModal = false;
 
     ctrl.location = $location;
 

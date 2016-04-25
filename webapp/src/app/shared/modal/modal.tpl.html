@@ -1,8 +1,9 @@
 <div class="modal" ng-class="{'is-active': $ctrl.showModal}">
   <div class="modal-background" ng-click="$ctrl.close()"></div>
   <div class="modal-container">
-    <div class="modal-content">
+    <div class="modal-content is-marginless">
       <div class="box">
+        <h1 class="title" ng-show="$ctrl.title">{{$ctrl.title}}</h1>
         <div class="content" ng-transclude>
         </div>
       </div>
