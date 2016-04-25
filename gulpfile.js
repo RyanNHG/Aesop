@@ -6,7 +6,7 @@ var clean = require('gulp-clean');
 
 var paths = {
     html: './webapp/src/index.html',
-    tpl: './webapp/src/app/**/*.tpl.html',
+    tpl: './webapp/src/app/**/*.html',
     image: './webapp/src/resources/**/*.png',
     js: './webapp/src/app/**/*.js',
     sass: './webapp/src/sass/*.scss'

@@ -6,7 +6,7 @@
         ng-class="{'serif': link.isBrand != null, 'subtitle': link.isBrand != null, 'is-active': $ctrl.location.path() == link.path}"
         ng-click="$ctrl.linkClicked(link.path, link.onClick)">
         <span class="icon" ng-hide="!link-icon">
-          <i class="material-icons">{{link.icon}}</i>
+          <i class="fa material-icons">{{link.icon}}</i>
         </span>
         {{link.label}}
       </a>
@@ -16,6 +16,5 @@
 </header>
 
 <modal show-modal="$ctrl.showModal">
-  <h3>Hello.</h3>
-  <p>Orange vests are for pussies!</p>
+  <sign-in-form on-sign-in="$ctrl.close()"></sign-in-form>
 </modal>
