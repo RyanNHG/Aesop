@@ -9,7 +9,7 @@ module.exports = function(app){
 
   // Connect to MongoDB
   console.log('Connecting to MongoLab as ' + credentials.username + '...');
-  var dbUrl = 'mongodb://'+credentials.username+':'+credentials.password+'@ds013918.mlab.com:13918/aesop-db'
+  var dbUrl = 'mongodb://' + (process.env.MONGO_USER || credentials.username) + ':' + (process.env.MONGO_PWD || credentials.password) + '@ds013918.mlab.com:13918/aesop-db'
   mongoose.connect(dbUrl);
   console.log('...connected!');
 
