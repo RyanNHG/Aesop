@@ -68,7 +68,21 @@ welcome-page {
 }
 
 read-page {
-    .card {
+    .columns {
         margin-top: 20px;
+
+        .card-footer {
+            a {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                border-radius: 0;
+
+                i {
+                    font-size: inherit;
+                    padding: 5px;
+                }
+            }
+        }
     }
 }

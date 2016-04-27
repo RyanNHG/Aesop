@@ -12,17 +12,16 @@ module.exports = ['$http', function($http){
 		return srvc.request('POST', route, data);
 	};
 
-	srvc.request = function(method, route, data) {
+	srvc.put = function(route, data) {
+		return srvc.request('PUT', route, data);
+	};
 
-		console.log(data);
+	srvc.request = function(method, route, data) {
 
 		return $http({
 			method: method,
 			url: srvc.baseUrl + route,
 			params: data
-		}).then(function(res) {
-			console.log(res);
-			return res;
 		});
 
 	}

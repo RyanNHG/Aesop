@@ -60,4 +60,18 @@ module.exports = ['ApiService', function(ApiService){
 		return JSON.parse(localStorage.getItem('user'));
 	}
 
+	srvc.addFeedback = function(fableId, isLike) {
+			
+		var user = srvc.data.user;
+
+		if(isLike)
+			user.fableData.liked.push(fableId);
+		else
+			user.fableData.disliked.push(fableId);
+
+		return ApiService.put('user', {
+			user: user
+		});
+	}
+
 }];

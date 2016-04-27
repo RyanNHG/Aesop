@@ -50,6 +50,42 @@ module.exports = function(app){
 
 	});
 
+	app.put(route, function(req, res) {
+
+        if(!req.query || !req.query.user)
+            res.status(500).send('No user data provided');
+        else
+        {
+        	var newUser = JSON.parse(req.query.user);
+
+            User.findOne({ 
+				email: newUser.email, 
+				password: newUser.password
+			}, function(err, user){
+
+            	console.log(err, user)
+
+                if(!user) res.status(500).send('User not found');
+
+                else {
+	             
+	                user.email = newUser.email;
+	                user.password = newUser.password;
+	                user.fableData = newUser.fableData;
+
+	                user.save(function(err) {
+	                    
+	                    if(err) 
+	                        res.status(500).send(err);
+
+	                    res.status(200).send(user);
+	                });
+	            }
+
+            });
+        }
+
+    })
 
 
 };
