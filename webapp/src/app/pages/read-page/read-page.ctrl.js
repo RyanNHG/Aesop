@@ -2,6 +2,7 @@ module.exports = ['FableService', 'UserService', function(FableService, UserServ
 
     var ctrl = this;
     ctrl.fableData = FableService.data;
+    ctrl.userData = UserService.data;
 
     ctrl.sendingFeedback = false;
 

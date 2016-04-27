@@ -3,7 +3,7 @@
 
     <div ng-repeat="(i, links) in $ctrl.navLinks" class="header-{{i}}">
       <a ng-repeat="link in links" class="header-tab" ng-hide="link.hidden == true"
-        ng-class="{'serif': link.isBrand != null, 'subtitle': link.isBrand != null, 'is-active': $ctrl.location.path() == link.path, 'is-disabled': $ctrl.location.path() == link.path}"
+        ng-class="{'serif': link.isBrand != null, 'subtitle': link.isBrand != null, 'is-active': $ctrl.location.path() == link.path, 'is-disabled': $ctrl.location.path() == link.path || link.disabled}"
         ng-click="$ctrl.linkClicked(link.path, link.onClick)">
         <span class="icon" ng-hide="!link-icon">
           <i class="fa material-icons is-unselectable">{{link.icon}}</i>

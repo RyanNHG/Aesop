@@ -63,8 +63,6 @@ module.exports = function(app){
 				password: newUser.password
 			}, function(err, user){
 
-            	console.log(err, user)
-
                 if(!user) res.status(500).send('User not found');
 
                 else {

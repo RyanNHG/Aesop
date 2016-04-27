@@ -27,8 +27,7 @@ function($location, UserService){
             {
                 label: 'Profile',
                 onClick: 'showSignInModal',
-                icon: 'account_circle',
-                hidden: false
+                icon: 'account_circle'
             }
         ]
     };

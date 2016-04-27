@@ -18,11 +18,12 @@
 
             <!-- Body --><!-- TODO: Find a less ridiculous way to cut title from body... -->
             {{$ctrl.fableData.fable.body.substring($ctrl.fableData.fable.title.length + 13, $ctrl.fableData.fable.body.length - 1)}}
-            
-            <hr>
 
-            <!-- Moral -->
-            <p class="has-text-centered"><i>{{$ctrl.fableData.fable.moral}}</i></p>
+            <!-- Moral -->            
+            <div ng-show="$ctrl.fableData.fable.moral">
+              <hr>
+              <p class="has-text-centered"><i>{{$ctrl.fableData.fable.moral}}</i></p>
+            </div>
 
           </div>
         </div>
@@ -41,7 +42,9 @@
 
   </div>
 
+
   <div ng-show="$ctrl.fableData.fable == null" class="column">
+    <h3 class="title" ng-hide="$ctrl.userData.user">Please Sign In</h3>
     <a class="button is-loading is-fullwidth is-large">Loading</a>
   </div>
 

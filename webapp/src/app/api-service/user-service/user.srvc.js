@@ -71,6 +71,11 @@ module.exports = ['ApiService', function(ApiService){
 
 		return ApiService.put('user', {
 			user: user
+		}).then(function(res){
+			// TODO: Clean this up
+			srvc.data.user = res.data;
+			srvc.cacheUser();
+			return res;
 		});
 	}
 
