@@ -47,6 +47,13 @@ html {
 
 // Welcome page
 welcome-page {
+
+    .column.is-flex {
+        align-items: center;
+        flex-direction: column;
+        justify-content: center;
+    }
+
     .is-1.title {
 
         display: flex;
@@ -57,5 +64,11 @@ welcome-page {
             font-size: inherit;
             padding: 5px;
         }
+    }
+}
+
+read-page {
+    .card {
+        margin-top: 20px;
     }
 }

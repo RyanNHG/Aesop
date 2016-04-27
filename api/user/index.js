@@ -21,7 +21,7 @@ module.exports = function(app){
 			password: user.password
 		}, function (err, user) {
 		  if (!user)
-		  	res.status(500).send(null);
+		  	res.status(500).send('Email or password invalid.');
 		  else
 			res.status(200).send(user);
 		});
@@ -44,7 +44,7 @@ module.exports = function(app){
 		var newUser = new User(user);
 
 		newUser.save({isNew:true}, function(err, user){
-			if(err)	res.status(500).json(err)
+			if(err)	res.status(500).json('User with that email already exists.');
 			else res.status(200).send(user);
 		});
 

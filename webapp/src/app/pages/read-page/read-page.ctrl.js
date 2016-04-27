@@ -1,11 +1,7 @@
-module.exports = [function(){
+module.exports = ['FableService', function(FableService){
 
     var ctrl = this;
-
-    ctrl.close = function(){
-        ctrl.showModal = false;
-        if(ctrl.onClose)
-            ctrl.onClose();
-    };
+    ctrl.fableData = FableService.data;
+    console.log(ctrl.fableData.fable);
 
 }];

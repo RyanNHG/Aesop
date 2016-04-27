@@ -1,7 +1,8 @@
-module.exports = ['$location',
-function($location){
+module.exports = ['$location', 'UserService',
+function($location, UserService){
 
     var ctrl = this;
+    ctrl.userData = UserService.data;
 
     ctrl.navLinks = {
         left: [
@@ -24,10 +25,10 @@ function($location){
         ],
         right: [
             {
-                label: 'Sign in',
-                //path: '/profile',
+                label: 'Profile',
                 onClick: 'showSignInModal',
-                icon: 'account_circle'
+                icon: 'account_circle',
+                hidden: false
             }
         ]
     };
@@ -35,6 +36,11 @@ function($location){
     ctrl.showModal = false;
 
     ctrl.location = $location;
+
+    // Called on navbar load
+    ctrl.onInit = function(){
+        UserService.onInit();
+    };
 
     //  Go to another page
     ctrl.linkClicked = function(path, onClick) {

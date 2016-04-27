@@ -1,1 +1,30 @@
-<h1 class="title">Read Page!</h1>
+<div class="container">
+  <div class="columns">
+
+    <div class="column is-half is-offset-one-quarter">
+
+      <div class="card is-fullwidth">
+        <header class="card-header">
+          <p class="card-header-title title">
+            {{$ctrl.fableData.fable.title}}
+          </p>
+        </header>
+        <div class="card-content">
+          <div class="content">
+            {{$ctrl.fableData.fable.body}}
+            <hr>
+            <p class="has-text-centered"><i>{{$ctrl.fableData.fable.moral}}</i></p>
+          </div>
+        </div>
+        <footer class="card-footer">
+          <a class="button card-footer-item is-danger">I hate it!</a>
+          <a class="button card-footer-item">Next Story</a>
+          <a class="button card-footer-item is-success">I Like it!</a>
+        </footer>
+      </div>
+
+    </div>
+
+  </div>
+
+</div>

@@ -1,8 +1,8 @@
-<header class="header card is-fullwidth">
+<header class="header card is-fullwidth" ng-init="$ctrl.onInit()">
   <div class="container">
 
     <div ng-repeat="(i, links) in $ctrl.navLinks" class="header-{{i}}">
-      <a ng-repeat="link in links" class="header-tab"
+      <a ng-repeat="link in links" class="header-tab" ng-hide="link.hidden == true"
         ng-class="{'serif': link.isBrand != null, 'subtitle': link.isBrand != null, 'is-active': $ctrl.location.path() == link.path, 'is-disabled': $ctrl.location.path() == link.path}"
         ng-click="$ctrl.linkClicked(link.path, link.onClick)">
         <span class="icon" ng-hide="!link-icon">
@@ -15,6 +15,6 @@
   </div>
 </header>
 
-<modal title="Welcome" show-modal="$ctrl.showModal">
+<modal show-modal="$ctrl.showModal">
   <sign-in-form on-sign-in="$ctrl.close()"></sign-in-form>
 </modal>
