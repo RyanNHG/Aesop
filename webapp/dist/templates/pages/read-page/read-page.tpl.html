@@ -1,0 +1,52 @@
+<div class="container" ng-init="$ctrl.onInit()">
+
+  <div class="column is-6 is-offset-3" ng-hide="$ctrl.fableData.fable == null" >
+
+    <div class="card is-fullwidth">
+
+      <div>
+        <!-- Fable Title -->
+        <header class="card-header">
+          <p class="card-header-title title">
+            {{$ctrl.fableData.fable.title}}
+          </p>
+        </header>
+
+        <!-- Fable -->
+        <div class="card-content">
+          <div class="content">
+
+            <!-- Body --><!-- TODO: Find a less ridiculous way to cut title from body... -->
+            {{$ctrl.fableData.fable.body.substring($ctrl.fableData.fable.title.length + 13, $ctrl.fableData.fable.body.length - 1)}}
+
+            <!-- Moral -->            
+            <div ng-show="$ctrl.fableData.fable.moral">
+              <hr>
+              <p class="has-text-centered"><i>{{$ctrl.fableData.fable.moral}}</i></p>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      <!-- Feedback Buttons -->
+      <footer class="card-footer">
+        <a ng-repeat="button in $ctrl.feedbackButtons" 
+        ng-class="{'is-disabled': $ctrl.sendingFeedback, 'is-loading': button.isLoading}"
+        class="has-icon is-large button card-footer-item {{button.btnClass}}" 
+        ng-click="$ctrl.onFeedbackClick(button)">
+          <i class="fa material-icons">{{button.icon}}</i>
+        </a>
+      </footer>
+    </div>
+
+  </div>
+
+
+  <div ng-show="$ctrl.fableData.fable == null" class="column">
+    <h3 class="title" ng-hide="$ctrl.userData.user">Please Sign In</h3>
+    <a class="button is-loading is-fullwidth is-large">Loading</a>
+  </div>
+
+
+</div>

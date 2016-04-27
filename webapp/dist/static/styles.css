@@ -1,0 +1,54 @@
+@import url(https://fonts.googleapis.com/css?family=Roboto);
+@import url(https://fonts.googleapis.com/css?family=Roboto+Slab);
+body {
+  font-family: Roboto; }
+
+.serif, .title {
+  font-family: Roboto Slab; }
+
+@media screen and (max-width: 768px) {
+  .header .container {
+    -webkit-box-orient: inherit;
+    -webkit-box-direction: inherit;
+    -webkit-flex-direction: inherit;
+    -ms-flex-direction: inherit;
+    flex-direction: inherit; } }
+
+.pull-left {
+  justify-content: flex-start !important; }
+
+.pull-right {
+  justify-content: flex-end !important; }
+
+html {
+  height: 100%;
+  overflow: inherit; }
+  html body {
+    height: 100%; }
+    html body [ng-view] {
+      overflow: auto;
+      height: calc(100% - 50px); }
+
+welcome-page .column.is-flex {
+  align-items: center;
+  flex-direction: column;
+  justify-content: center; }
+
+welcome-page .is-1.title {
+  display: flex;
+  align-items: center;
+  justify-content: center; }
+  welcome-page .is-1.title i {
+    font-size: inherit;
+    padding: 5px; }
+
+read-page .columns {
+  margin-top: 20px; }
+  read-page .columns .card-footer a.button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0; }
+    read-page .columns .card-footer a.button i {
+      font-size: inherit;
+      padding: 5px; }
