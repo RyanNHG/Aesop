@@ -1,4 +1,4 @@
-module.exports = ['FableService', function(FableService){
+module.exports = ['FableService', 'NormalizerService', function(FableService, NormalizerService){
 
     var ctrl = this;
 
@@ -9,19 +9,14 @@ module.exports = ['FableService', function(FableService){
     };
 
     // Used to initially populate emotion data.
-    ctrl.getFableEmotionData = function(res){
+    ctrl.checkFableEmotionData = function(res){
 
-    	var index = 1;
     	var fables = res.data;
 
-    	FableService.getEmotionData(res.data[index]).then(function(){
-    		ctrl.getEmotionDataHelper(fables, index);
-    	})
+    	ctrl.getEmotionDataHelper(fables, 0);
     }
 
     ctrl.getEmotionDataHelper = function(fables, index) {
-
-		index++;
 
 		// If there are still more fables
 		if(index < fables.length) {
@@ -36,14 +31,20 @@ module.exports = ['FableService', function(FableService){
 
 				// Get emotion data for the fable
 				FableService.getEmotionData(fable).then(function(){
-    				ctrl.getEmotionDataHelper(fables, index);
+    				ctrl.getEmotionDataHelper(fables, index + 1);
     			})
 
 			}
-			else {
+			else if(fable.normalizedEmotionData == null){
 				console.log('Fable ' + index + ' has emotionData');
 
-				ctrl.getEmotionDataHelper(fables, index);
+				FableService.setNormalizedEmotionData(fable).then(function(){
+					ctrl.getEmotionDataHelper(fables, index + 1);
+				})
+			}
+			else {
+				console.log('Fable ' + index + ' has both raw and normalized emotion data')
+				ctrl.getEmotionDataHelper(fables, index + 1);
 			}
 
 		}
@@ -51,7 +52,7 @@ module.exports = ['FableService', function(FableService){
     }
 
     ctrl.openDetailModal = function(fable) {
-    	// NormalizerService.normalize(fable.emotionData);
+    	console.log(fable.normalizedEmotionData);
     }
 
 }];

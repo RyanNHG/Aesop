@@ -11,6 +11,13 @@ var fableSchema = new Schema({
 		fear: {type: Number},
 		joy: {type: Number},
 		sadness: {type: Number}
+	},
+	normalizedEmotionData: {
+		anger: {type: Number},
+		disgust: {type: Number},
+		fear: {type: Number},
+		joy: {type: Number},
+		sadness: {type: Number}
 	}
 });
 

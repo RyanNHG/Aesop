@@ -1,4 +1,4 @@
-module.exports = ['ApiService', 'UserService', function(ApiService, UserService){
+module.exports = ['ApiService', 'UserService', 'NormalizerService', function(ApiService, UserService, NormalizerService){
 	
 	var srvc = this;
 
@@ -57,6 +57,19 @@ module.exports = ['ApiService', 'UserService', function(ApiService, UserService)
 			fable: fable
 		}).then(function(res){
 			console.log('Updated: ', res)
+		})
+
+	};
+
+	srvc.setNormalizedEmotionData = function(fable){
+
+		fable.normalizedEmotionData = NormalizerService.normalize(fable.emotionData);
+
+		return ApiService.put('fable', {
+			fable: fable
+		}).then(function(res){
+			console.log('Normalized: ', res)
+			return res;
 		})
 
 	};
