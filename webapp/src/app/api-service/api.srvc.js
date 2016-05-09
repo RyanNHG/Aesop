@@ -8,6 +8,14 @@ module.exports = ['$http', function($http){
 		return srvc.request('GET', route, data);
 	};
 
+	srvc.absoluteGet = function(url, data) {
+		return $http({
+			method: 'GET',
+			url: url,
+			params: data
+		});
+	};
+
 	srvc.post = function(route, data) {
 		return srvc.request('POST', route, data);
 	};

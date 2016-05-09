@@ -50,6 +50,7 @@ module.exports = function(app){
 
 	});
 
+	// Update user
 	app.put(route, function(req, res) {
 
         if(!req.query || !req.query.user)

@@ -1,8 +1,36 @@
 <div class="hero is-success">
   <div class="hero-content">
     <div class="container">
-      <h1 class="title">Explore Page</h1>
-      <h3 class="subtitle">Coming soon!</h3>
+      <div class="columns">
+        <div class="column">
+          <h1 class="title">Explore Fables</h1>
+          <h3 class="subtitle">Look at fables in detail</h3>
+        </div>
+        <div class="column has-text-centered">
+          <p class="control has-icon">
+            <input class="input" type="text" placeholder="Search by title..." ng-model="query">
+            <i class="fa material-icons">search</i>
+          </p>
+          <p>
+            {{ ($ctrl.fableData.fables | filter : {title: query}).length }} 
+            <span ng-hide="($ctrl.fableData.fables | filter : {title: query}).length == $ctrl.fableData.fables.length">/ {{$ctrl.fableData.fables.length}}</span> fables
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="section">
+  <div class="container">
+    <button class="button is-loading is-large is-fullwidth" ng-show="$ctrl.fableData.fables.length == 0"></button>
+    <div class="columns is-multiline is-mobile" ng-init="$ctrl.onInit()">
+      <div class="column is-one-quarter-desktop is-one-third-tablet is-half-mobile is-flex" 
+      style="flex-direction: column;" 
+      ng-repeat="fable in $ctrl.fableData.fables | filter : {title: query}">
+        <div class="box is-flex" style="flex: 1; cursor: pointer;" ng-click="$ctrl.openDetailModal(fable)">
+          <h3>{{fable.title}}</h3>
+        </div>
+      </div>
     </div>
   </div>
 </div>
