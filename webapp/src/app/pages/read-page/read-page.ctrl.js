@@ -1,4 +1,5 @@
-module.exports = ['FableService', 'UserService', function(FableService, UserService){
+module.exports = ['FableService', 'UserService', 'NormalizerService', 
+function(FableService, UserService, NormalizerService){
 
     var ctrl = this;
     ctrl.fableData = FableService.data;
@@ -26,7 +27,20 @@ module.exports = ['FableService', 'UserService', function(FableService, UserServ
     }
 
     ctrl.getNewFable = function(){
-    	FableService.getFable();
+    	FableService.getAllFables().then(function(fables){
+            // Get list of fable ids
+            var readFableIds = UserService.getReadFableIds();
+
+            // Get raw and normalized preferences
+            var rawPreferences = UserService.getEmotionalPreferences(fables);
+            var normalizedPreferences = NormalizerService.normalize(rawPreferences);
+
+            console.log(readFableIds);
+            console.log(rawPreferences, normalizedPreferences);
+
+            // Based on previously read fables and normalized preferences, find best fable to recommend
+            //FableService.getRecommendedFable();
+        });
     };
 
     ctrl.onFeedbackClick = function(button) {

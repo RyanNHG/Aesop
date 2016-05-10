@@ -7,7 +7,6 @@ module.exports = ['ApiService', 'UserService', 'NormalizerService', function(Api
 
 	srvc.data = {};
 
-
 	srvc.getFable = function() {
 
 		srvc.data.fable = null;
@@ -22,12 +21,24 @@ module.exports = ['ApiService', 'UserService', 'NormalizerService', function(Api
 
 	srvc.getAllFables = function() {
 
-		srvc.data.fables = [];
+		srvc.data.fables = srvc.getFablesFromCache();
 
-		return ApiService.get('fables', {}).then(function(res){
-			srvc.data.fables = res.data;
-			return res;
-		})
+		if(srvc.data.fables != null && srvc.data.fables.length > 0)
+		{
+			return new Promise(function(resolve, reject){
+				resolve(srvc.data.fables);
+			});
+		}
+		else
+		{
+			srvc.data.fables = [];
+
+			return ApiService.get('fables', {}).then(function(res){
+				srvc.data.fables = res.data;
+				srvc.cacheFables();
+				return res;
+			})
+		}
 
 	};
 
@@ -73,6 +84,14 @@ module.exports = ['ApiService', 'UserService', 'NormalizerService', function(Api
 		})
 
 	};
+
+	srvc.cacheFables = function() {
+		localStorage.setItem('fables', JSON.stringify(srvc.data.fables));
+	}
+
+	srvc.getFablesFromCache = function() {
+		return JSON.parse(localStorage.getItem('fables'));
+	}
 
 
 }];

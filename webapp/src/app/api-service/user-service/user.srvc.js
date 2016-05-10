@@ -79,4 +79,88 @@ module.exports = ['ApiService', function(ApiService){
 		});
 	}
 
+	srvc.getReadFableIds = function(){
+
+		var fableIds = [];
+		var user = srvc.data.user;
+
+		if(user == null || user.fableData == null) return fableIds;
+
+		for(var i in user.fableData)
+		{
+			for(var j in user.fableData[i])
+			{
+				fableIds.push(user.fableData[i][j]);
+			}
+		}
+
+		return fableIds;
+
+	}
+
+	srvc.getEmotionalPreferences = function(fables){
+
+		var user = srvc.data.user;
+
+		// If there is no user, return.
+		if(user == null) return;
+
+		var preferences = {
+			anger: 0,
+			disgust: 0,
+			fear: 0,
+			joy: 0,
+			sadness: 0
+		};
+
+		// If there is no fableData, return default emotional preferences
+		if(user.fableData == null || 
+			((user.fableData.liked == null || user.fableData.liked.length == 0) &&
+			(user.fableData.disliked == null || user.fableData.disliked.length == 0)))
+		{
+			return preferences;
+		}
+		else {
+
+			// Look ma! O(n^4), thats some good code!
+			for(var index in fables)
+			{
+				var fable = fables[index];
+
+				//	Iterates through 'liked' and 'disliked' arrays
+				for(var feedback in user.fableData)
+				{
+					// Iterate through IDs in user history
+					for(var i in user.fableData[feedback])
+					{
+						var fableId = user.fableData[feedback][i];
+
+						// If this fable matches the fableId
+						if(fable._id == fableId)
+						{
+							// Iterate through all emotions for that fable
+							for(var emotion in fable.emotionData)
+							{
+								var value = fable.emotionData[emotion];
+
+								// If the fable is disliked, negate it.
+								if(feedback == 'disliked')
+									value *= -1;
+
+								preferences[emotion] += value;
+
+							}
+						}
+					}	
+				}
+
+
+			}
+
+			return preferences;
+
+		}
+
+	};
+
 }];
