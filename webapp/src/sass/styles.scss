@@ -86,3 +86,11 @@ read-page {
         }
     }
 }
+
+explore-page {
+    modal .column.is-2.has-text-centered {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+}

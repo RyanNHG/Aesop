@@ -4,6 +4,36 @@ module.exports = ['FableService', 'NormalizerService', function(FableService, No
 
     ctrl.fableData = FableService.data;
 
+    ctrl.emotions = [
+
+        {
+            key: 'anger',
+            label: 'Anger',
+            class: 'is-danger'
+        },
+        {
+            key: 'disgust',
+            label: 'Disgust',
+            class: 'is-success'
+        },
+        {
+            key: 'fear',
+            label: 'Fear',
+            class: 'is-primary'
+        },
+        {
+            key: 'joy',
+            label: 'Joy',
+            class: 'is-warning'
+        },
+        {
+            key: 'sadness',
+            label: 'Sadness',
+            class: 'is-info'
+        }
+
+    ]
+
     ctrl.onInit = function(){
     	FableService.getAllFables();
     };
@@ -14,6 +44,23 @@ module.exports = ['FableService', 'NormalizerService', function(FableService, No
     	var fables = res.data;
 
     	ctrl.getEmotionDataHelper(fables, 0);
+    }
+
+    ctrl.getMaxEmotion = function(res) {
+
+        if(ctrl.fable == null) return 1;
+
+        var emotions = ctrl.fable.emotionData;
+        var max = emotions['anger'];
+
+        for(var emotion in emotions)
+        {
+            if(emotions[emotion] > max)
+                max = emotions[emotion];
+        }
+
+        return max;
+
     }
 
     ctrl.getEmotionDataHelper = function(fables, index) {
@@ -52,7 +99,8 @@ module.exports = ['FableService', 'NormalizerService', function(FableService, No
     }
 
     ctrl.openDetailModal = function(fable) {
-    	console.log(fable.normalizedEmotionData);
+        ctrl.fable = fable;
+        ctrl.showDetailModal = true;
     }
 
 }];

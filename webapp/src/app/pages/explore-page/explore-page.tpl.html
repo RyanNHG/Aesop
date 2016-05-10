@@ -34,3 +34,29 @@
     </div>
   </div>
 </div>
+<modal title="$ctrl.fable.title" show-modal="$ctrl.showDetailModal">
+  
+  <div class="content">
+
+    <p class="subtitle serif">Fable</p>
+    <p>{{$ctrl.fable.body.substring($ctrl.fable.title.length + 13, $ctrl.fable.body.length - 1)}}</p>
+    <hr>
+    
+    <div  ng-show="$ctrl.fable.moral.length > 1">
+      <p class="subtitle serif">Moral</p>
+      <p>{{$ctrl.fable.moral}}</p>
+      <hr>
+    </div>
+
+    <p class="subtitle serif">Emotional Data</p>
+
+    <div class="columns is-mobile" ng-repeat="emotion in $ctrl.emotions">
+      <div class="column is-2 has-text-centered"><p class="is-5">{{emotion.label}}</p></div>
+      <div class="column">
+        <div class="has-text-centered">{{($ctrl.fable.emotionData[emotion.key] * 100) | number: 2}}%</div>
+        <progress class="progress is-large {{emotion.class}}" value="{{$ctrl.fable.emotionData[emotion.key]}}" max="{{$ctrl.getMaxEmotion()}}"></progress>
+      </div>
+    </div>
+
+  </div>
+</modal>

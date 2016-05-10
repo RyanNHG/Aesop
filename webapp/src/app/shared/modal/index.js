@@ -3,7 +3,7 @@ angular.module(module.exports = 'modal',[])
     templateUrl: 'templates/shared/modal/modal.tpl.html',
     controller: require('./modal.ctrl'),
     bindings: {
-    	title: '@',
+    	title: '=',
     	showModal: '=',
     	onClose: '&'
     },
