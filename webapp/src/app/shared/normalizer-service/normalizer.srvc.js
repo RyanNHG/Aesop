@@ -41,6 +41,22 @@ module.exports = [function(){
 
 		return normalized;
 
+	};
+
+	srvc.getDistance = function(userData, fableData) {
+
+		var distance = 0;
+
+		for(var emotion in userData)
+		{
+			var userVal = userData[emotion];
+			var fableVal = fableData[emotion];
+
+			distance += (userVal - fableVal) * (userVal - fableVal);
+		}
+
+		return distance;
+
 	}
 
 

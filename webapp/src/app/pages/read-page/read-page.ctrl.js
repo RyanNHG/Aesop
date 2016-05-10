@@ -1,5 +1,5 @@
-module.exports = ['FableService', 'UserService', 'NormalizerService', 
-function(FableService, UserService, NormalizerService){
+module.exports = ['$scope', 'FableService', 'UserService', 'NormalizerService', 
+function($scope, FableService, UserService, NormalizerService){
 
     var ctrl = this;
     ctrl.fableData = FableService.data;
@@ -35,11 +35,11 @@ function(FableService, UserService, NormalizerService){
             var rawPreferences = UserService.getEmotionalPreferences(fables);
             var normalizedPreferences = NormalizerService.normalize(rawPreferences);
 
-            console.log(readFableIds);
-            console.log(rawPreferences, normalizedPreferences);
-
             // Based on previously read fables and normalized preferences, find best fable to recommend
-            //FableService.getRecommendedFable();
+            FableService.getRecommendedFable(readFableIds, normalizedPreferences);
+
+            // Because the fable wont refresh... Gosh darnit
+            $scope.$apply();
         });
     };
 

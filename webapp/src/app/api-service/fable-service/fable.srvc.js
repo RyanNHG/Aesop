@@ -19,6 +19,55 @@ module.exports = ['ApiService', 'UserService', 'NormalizerService', function(Api
 		});
 	};
 
+	srvc.getRecommendedFable = function(readFableIds, userPreferences){
+
+		var fables = srvc.data.fables;
+
+		// Randomly pick a fable by default
+ 		var rand = parseInt(Math.random() * fables.length);
+		var recommendedFable = fables[rand];
+		var minDistance = -1;
+
+		// Get random fable if there are no read fables
+		if(readFableIds.length > 0)
+		{
+			// Iterate through all fables
+			for(var i in fables)
+			{
+				var fable = fables[i];
+
+
+				// Check if fable has been read already
+				var skipFable = false;
+
+				for(var j in readFableIds)
+				{
+					if(readFableIds[j] == fable._id)
+					{
+						skipFable = true;
+						break;
+					}
+				}
+
+				// If it has skip the fable
+				if(skipFable) continue;
+
+				var distance = NormalizerService.getDistance(userPreferences, fable.normalizedEmotionData);
+
+				if(minDistance < 0 || distance < minDistance)
+				{
+					recommendedFable = fable;
+					minDistance = distance;
+				}
+			}
+		}
+
+		srvc.data.fable = recommendedFable;
+		return recommendedFable;
+
+
+	};
+
 	srvc.getAllFables = function() {
 
 		srvc.data.fables = srvc.getFablesFromCache();
