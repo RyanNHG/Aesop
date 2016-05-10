@@ -3,11 +3,11 @@ Rebecca Freeman | Ryan Haskell-Glatz
 
 
 ###Our Project
-Aesop recommends the perfect fables for users based on their feedback as well as the overall feedback of the community.
+Aesop recommends the perfect fables for users based on their feedback and the emotional analysis of the fables themselves.
 
-By applying concepts learned from CS 410: Text Information Systems, we implemented a fully functioning web application, with both __content-based__ and __collaborative__ filtering.
+By applying concepts learned from CS 410: Text Information Systems, we implemented a fully functioning web application using __content-based__ filtering with a focus on emotional analyis.
 
-Without having a profile, the top-rated stories will be presented to the anonymous user. If the user wants to get a personalized experience, he or she can choose to create an account and sign in.
+Without having a profile, all fables and their associated emotional analysis are searching on the 'Explore' page. If the user wants to get a personalized experience, he or she can choose to create an account and sign in.
 
 After signing in, users can provide feedback on short stories that they have read. From this information, we can recommend the next story to provide. Whether we fail or succeed at first, the users continued feedback allows our system to better model the reader's interests.
 
