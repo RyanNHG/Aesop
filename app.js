@@ -3,7 +3,7 @@ var app = express();
 
 var bodyParser = require('body-parser');
 
-var scraper = require('./scraper');
+//var scraper = require('./scraper');
 var api = require('./api');
 
 // Serves static files
